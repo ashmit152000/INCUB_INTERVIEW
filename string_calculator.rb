@@ -13,9 +13,13 @@ class StringCalculator
   end
 
   numbers_array = numbers.split(delimiter).map(&:to_i) # split the numbers and convert into integer
+  negative_numbers = numbers_array.select {|n| n < 0}
+  raise "Negative number not allowed #{negative_numbers.join(",")}" unless negative_numbers.empty?
 
   numbers_array.sum
   end
+
+
 
   puts StringCalculator.add("1")
   puts StringCalculator.add("1,2")
